@@ -344,25 +344,6 @@ TEST(SparseSetNoType, Clone) {
     ASSERT_TRUE(std::equal(set.begin(), set.end(), other->begin()));
 }
 
-TEST(SparseSetNoType, Swap) {
-    entt::sparse_set<std::uint64_t> lhs;
-    entt::sparse_set<std::uint64_t> rhs;
-
-    lhs.construct(0);
-    lhs.construct(42);
-    rhs.construct(3);
-
-    auto test = [](const auto &lhs, const auto &rhs) {
-        ASSERT_TRUE(lhs.has(0));
-        ASSERT_TRUE(lhs.has(42));
-        ASSERT_TRUE(rhs.has(3));
-    };
-
-    test(lhs, rhs);
-    std::swap(lhs, rhs);
-    test(rhs, lhs);
-}
-
 TEST(SparseSetWithType, Functionalities) {
     entt::sparse_set<std::uint64_t, int> set;
     const auto &cset = set;
@@ -930,26 +911,4 @@ TEST(SparseSetWithType, CloneMoveOnlyComponent) {
     // the purpose is to ensure that move only components are not cloned
     entt::sparse_set<std::uint64_t, std::unique_ptr<int>> set;
     ASSERT_EQ(set.clone(), nullptr);
-}
-
-TEST(SparseSetWithType, Swap) {
-    entt::sparse_set<std::uint64_t, int> lhs;
-    entt::sparse_set<std::uint64_t, int> rhs;
-
-    lhs.construct(0, 1);
-    lhs.construct(42, 2);
-    rhs.construct(3, 3);
-
-    auto test = [](const auto &lhs, const auto &rhs) {
-        ASSERT_TRUE(lhs.has(0));
-        ASSERT_EQ(lhs.get(0), 1);
-        ASSERT_TRUE(lhs.has(42));
-        ASSERT_EQ(lhs.get(42), 2);
-        ASSERT_TRUE(rhs.has(3));
-        ASSERT_EQ(rhs.get(3), 3);
-    };
-
-    test(lhs, rhs);
-    std::swap(lhs, rhs);
-    test(rhs, lhs);
 }

@@ -485,18 +485,6 @@ public:
         return other;
     }
 
-    /**
-     * @brief Swaps two sparse sets.
-     * @param lhs A valid sparse set object.
-     * @param rhs A valid sparse set object.
-     */
-    friend void swap(sparse_set &lhs, sparse_set &rhs) {
-        using std::swap;
-
-        std::swap(lhs.reverse, rhs.reverse);
-        std::swap(lhs.direct, rhs.direct);
-    }
-
 private:
     std::vector<entity_type> reverse;
     std::vector<entity_type> direct;
@@ -965,18 +953,6 @@ public:
         } else {
             return nullptr;
         }
-    }
-
-    /**
-     * @brief Swaps two sparse sets.
-     * @param lhs A valid sparse set object.
-     * @param rhs A valid sparse set object.
-     */
-    friend void swap(sparse_set &lhs, sparse_set &rhs) {
-        using std::swap;
-
-        underlying_type::swap(lhs, rhs);
-        std::swap(lhs.instances, rhs.instances);
     }
 
 private:
