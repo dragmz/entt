@@ -21,5 +21,4 @@
 * mention hunter in the readme file, section packaging tools
 * travis + windows is now available, try it
 * events on replace, so that one can track updated components? indagate impact
-* add sparse_set::swap and registry::swap
 * optimize for empty component - maybe it's possible with a raw-less view that uses fake iterators (with correct size (correct size, same component)
