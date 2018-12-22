@@ -22,3 +22,4 @@
 * travis + windows is now available, try it
 * events on replace, so that one can track updated components? indagate impact
 * optimize for empty component - maybe it's possible with a raw-less view that uses fake iterators (with correct size (correct size, same component)
+* tags revenge: if it's possible, reintroduce them but without a link to entities (see #169 for more details)
